@@ -1,7 +1,17 @@
+// views/layout.pug
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Establishments
+    link(rel='stylesheet', href='/css/styles.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css')
   body
+    nav.navbar
+      a.nav-logo(href='/') Home
+      .nav-spacer
+      a.btn(href='/establishments/new') New Establishment
     block content
+    script(src='/js/circle-rating.js')
