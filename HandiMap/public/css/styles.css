@@ -241,8 +241,8 @@ button[type="submit"]:hover, .btn-avis:hover {
 }
 
 .info {
-  display: flex; /* Utiliser flexbox */
-  justify-content: space-between; /* Espacer les éléments */
+  display: flex; 
+  justify-content: space-between; 
   align-items: center;
   background-color: #ffffff;
   padding: 2rem 3rem;
