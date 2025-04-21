@@ -46,16 +46,16 @@ block content
               span.circle
               span.circle
               span.circle
-            .tooltip
-              each cat in details
-                .tooltip-row
-                  span.label= cat[0]
-                  .circle-rating(data-grade=cat[1])
-                    span.circle
-                    span.circle
-                    span.circle
-                    span.circle
-                    span.circle
+              .tooltip
+                each cat in details
+                  .tooltip-row
+                    span.label= cat[0]
+                    .circle-rating(data-grade=cat[1])
+                      span.circle
+                      span.circle
+                      span.circle
+                      span.circle
+                      span.circle
           else
             a.btn-answer(href='/questionnaire/' + item.id) Répondre
 
