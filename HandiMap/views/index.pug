@@ -29,35 +29,62 @@ block content
   if items.length
     ul.results
       each item in items
-        li.result-item(style='display: flex; justify-content: space-between; align-items: center; position: relative;')
-        .info
-          h3= item.nom
-          p= item.type_lieu + ' – ' + item.proprietaire_prenom + ' ' + item.proprietaire_nom
-          if item.note
-            - const note = item.note.note_global
-            - const details = []
-            - details.push(['Mental', item.note.note_mental])
-            - details.push(['Visuel', item.note.note_visuel])
-            - details.push(['Auditif', item.note.note_auditif])
-            - details.push(['Moteur', item.note.note_moteur])
-            .circle-rating(data-grade=note, style='position: relative;')
-              span.circle
-              span.circle
-              span.circle
-              span.circle
-              span.circle
-              .tooltip
-                each cat in details
-                  .tooltip-row
-                    span.label= cat[0]
-                    .circle-rating(data-grade=cat[1])
-                      span.circle
-                      span.circle
-                      span.circle
-                      span.circle
-                      span.circle
-          else
-            a.btn-answer(href='/questionnaire/' + item.id) Répondre
+        li.result-item(style='display: flex; justify-content: space-between; align-items: center; position: relative; flex-direction: column;')
+          .info
+            h3= item.nom
+            p= item.type_lieu + ' – ' + item.proprietaire_prenom + ' ' + item.proprietaire_nom
 
+            if item.note
+              - const note = item.note.note_global
+              - const details = []
+              - details.push(['Mental', item.note.note_mental])
+              - details.push(['Visuel', item.note.note_visuel])
+              - details.push(['Auditif', item.note.note_auditif])
+              - details.push(['Moteur', item.note.note_moteur])
+              .circle-rating(data-grade=note, style='position: relative;')
+                span.circle
+                span.circle
+                span.circle
+                span.circle
+                span.circle
+                .tooltip
+                  each cat in details
+                    .tooltip-row
+                      span.label= cat[0]
+                      .circle-rating(data-grade=cat[1])
+                        span.circle
+                        span.circle
+                        span.circle
+                        span.circle
+                        span.circle
+            else
+              a.btn-answer(href='/questionnaire/' + item.id) Répondre
+
+            // Formulaire d'avis utilisateur
+            .feedback-form(style='display:none;')
+              form(action='/notes/add' method='POST' style='margin-top: 10px; display: flex; flex-direction: column; gap: 5px;')
+                input(type='hidden' name='etablissement_id' value=item.id)
+
+                label(for='note_global') Note globale :
+                input(type='number' name='note_global' min='0' max='5' step='0.1' required)
+
+                label(for='note_mental') Mental :
+                input(type='number' name='note_mental' min='0' max='5' step='0.1')
+
+                label(for='note_visuel') Visuel :
+                input(type='number' name='note_visuel' min='0' max='5' step='0.1')
+
+                label(for='note_auditif') Auditif :
+                input(type='number' name='note_auditif' min='0' max='5' step='0.1')
+
+                label(for='note_moteur') Moteur :
+                input(type='number' name='note_moteur' min='0' max='5' step='0.1')
+
+                label(for='commentaire') Commentaire :
+                textarea(name='commentaire' rows='2' cols='40')
+
+                button(type='submit') Poster mon avis
   else
     p Aucun établissement trouvé.
+
+  

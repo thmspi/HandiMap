@@ -142,7 +142,7 @@ input[type="text"] {
   border-radius: 5px;
 }
 
-button[type="submit"] {
+button[type="submit"], .btn-avis {
   background-color: #006699;
   color: white;
   padding: 0.7rem 1.2rem;
@@ -153,7 +153,7 @@ button[type="submit"] {
   transition: background-color 0.3s;
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover, .btn-avis:hover {
   background-color: #004d66;
 }
 
@@ -254,3 +254,35 @@ button[type="submit"]:hover {
   line-height: 1.6;
   color: #333;
 }  
+
+.form-avis {
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 8px;
+  display: none;
+  transition: all 0.3s ease;
+}
+.form-avis input, .form-avis textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.form-avis button {
+  background-color: #006699;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+.form-avis button:hover {
+  background-color: #004d66;
+}
+
+.avis-form {
+  display: none;
+}
+
+.avis-form.visible {
+  display: block;
+}
