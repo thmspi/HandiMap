@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h2 Questionnaire for #{est.nom}
+  h2 Questionnaire pour #{est.nom}
 
   //- Hidden form to collect and submit all responses:
   form#qform(action=`/questionnaire/${est.id}` method='post')

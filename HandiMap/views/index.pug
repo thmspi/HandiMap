@@ -1,7 +1,63 @@
 extends layout
 
 block content
+  .home-intro
+    h2 ♿ Bienvenue sur HandiMap
+    p HandiMap est une plateforme pensée pour faciliter le quotidien des personnes en situation de handicap.
+    p
+      | Notre mission : permettre à tous de 
+      strong trouver facilement des établissements accessibles
+      | , et d'encourager les entreprises à 
+      strong partager les informations d’accessibilité
+      |  de leurs lieux (accès PMR, ascenseurs, sanitaires adaptés, etc.).
+    p Sur HandiMap :
+    ul
+      li Les utilisateurs peuvent 
+        strong chercher un lieu 
+        | et voir s’il est adapté à leurs besoins.
+      li Les professionnels peuvent 
+        strong renseigner les caractéristiques d’accessibilité 
+        | de leurs établissements.
+    p 👉 Ensemble, rendons chaque lieu visible, accessible et inclusif.
+
   .search-container
-    form(action='/search' method='get')
-      input(type='text' name='query' placeholder='Search establishments...')
-      button(type='submit') Search
+    form(action='/' method='get' id='search-form')
+      input(type='text' name='query' placeholder='Rechercher un établissement...' id='search-input')
+      button(type='submit') Rechercher
+
+  //- Afficher les établissements
+  if items.length
+    ul.results
+      each item in items
+        li.result-item(style='display: flex; justify-content: space-between; align-items: center; position: relative;')
+        .info
+          h3= item.nom
+          p= item.type_lieu + ' – ' + item.proprietaire_prenom + ' ' + item.proprietaire_nom
+          if item.note
+            - const note = item.note.note_global
+            - const details = []
+            - details.push(['Mental', item.note.note_mental])
+            - details.push(['Visuel', item.note.note_visuel])
+            - details.push(['Auditif', item.note.note_auditif])
+            - details.push(['Moteur', item.note.note_moteur])
+            .circle-rating(data-grade=note, style='position: relative;')
+              span.circle
+              span.circle
+              span.circle
+              span.circle
+              span.circle
+            .tooltip
+              each cat in details
+                .tooltip-row
+                  span.label= cat[0]
+                  .circle-rating(data-grade=cat[1])
+                    span.circle
+                    span.circle
+                    span.circle
+                    span.circle
+                    span.circle
+          else
+            a.btn-answer(href='/questionnaire/' + item.id) Répondre
+
+  else
+    p Aucun établissement trouvé.

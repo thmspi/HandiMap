@@ -1,10 +1,10 @@
 extends layout
 
 block content
-  h1 New Establishment
+  h1 Nouveau établissement
   form(action='/establishments' method='post')
     each field in ['nom','adresse','photo_url','proprietaire_nom','proprietaire_prenom','type_lieu']
       .form-group
         label(for=field)= field
         input(type='text' name=field id=field required)
-    button(type='submit') Save
+    button(type='submit') Enregistrer
