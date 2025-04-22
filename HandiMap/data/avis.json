@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1745357476550",
+    "etablissement_id": "1",
+    "note_global": "4",
+    "note_mental": "4",
+    "note_visuel": "3",
+    "note_auditif": "2",
+    "note_moteur": "5",
+    "commentaire": "Bien",
+    "createdAt": "2025-04-22T21:31:16.550Z"
+  },
+  {
+    "id": "1745357493145",
+    "etablissement_id": "1",
+    "note_global": "5",
+    "note_mental": "5",
+    "note_visuel": "5",
+    "note_auditif": "5",
+    "note_moteur": "5",
+    "commentaire": "Très bien",
+    "createdAt": "2025-04-22T21:31:33.145Z"
+  }
+]

@@ -60,11 +60,13 @@ block content
             else
               a.btn-answer(href='/questionnaire/' + item.id) Répondre
             
-            // Bouton pour laisser un avis
-            button.info-btn(type='button', data-id=item.id) Laisser un avis
+            // Boutons pour les avis
+            .avis-buttons(style='display: flex; gap: 10px; margin-top: 10px;')
+              button.info-btn(type='button', data-id=item.id, data-target='feedback-' + item.id) Laisser un avis
+              a.view-reviews-btn(href='/avis/etablissement/' + item.id) Voir les avis
 
-            // Conteneur pour le formulaire d'avis (renommé pour correspondre au JS)
-            .feedback-container(style='display:none;')
+            // Conteneur pour le formulaire d'avis avec ID unique
+            .feedback-container(id='feedback-' + item.id, style='display:none;')
               .feedback-form
                 form(action='/notes/add' method='POST' style='margin-top: 10px; display: flex; flex-direction: column; gap: 5px;')
                   input(type='hidden' name='etablissement_id' value=item.id)
@@ -90,5 +92,3 @@ block content
                   button(type='submit') Poster mon avis
   else
     p Aucun établissement trouvé.
-
-    

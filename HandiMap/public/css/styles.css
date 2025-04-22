@@ -314,3 +314,107 @@ button[type="submit"]:hover, .btn-avis:hover {
   width: 100%;
 }
 
+.etablissement-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #0275d8;
+}
+
+.avis-item {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+}
+
+.avis-header {
+  color: #666;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+.avis-ratings {
+  margin-bottom: 15px;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.label {
+  font-weight: bold;
+  margin-right: 10px;
+  min-width: 80px;
+}
+
+.avis-commentaire {
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.no-avis {
+  font-style: italic;
+  color: #666;
+  margin: 20px 0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.btn-primary, .info-btn {
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.info-btn {
+  background-color: #0275d8;
+  color: white;
+}
+
+/* Formulaire sur la page d'avis */
+.feedback-container {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.btn-submit {
+  background-color: #0275d8;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}

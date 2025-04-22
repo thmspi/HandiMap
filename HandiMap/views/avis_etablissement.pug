@@ -1,0 +1,109 @@
+extends layout
+
+block content
+  .container
+    .etablissement-header
+      a.back-btn(href='/') ← Retour
+      h2= etablissement.nom
+      
+    if avis && avis.length > 0
+      h3 Avis (#{avis.length})
+      
+      .avis-list
+        each avisSingle in avis
+          .avis-item
+            .avis-header
+              span.avis-date= new Date(avisSingle.createdAt).toLocaleDateString()
+              
+            .avis-ratings
+              .rating-row
+                span.label Note globale: 
+                .circle-rating(data-grade=avisSingle.note_global)
+                  span.circle
+                  span.circle
+                  span.circle
+                  span.circle
+                  span.circle
+              
+              if avisSingle.note_mental
+                .rating-row
+                  span.label Mental: 
+                  .circle-rating(data-grade=avisSingle.note_mental)
+                    span.circle
+                    span.circle
+                    span.circle
+                    span.circle
+                    span.circle
+              
+              if avisSingle.note_visuel
+                .rating-row
+                  span.label Visuel: 
+                  .circle-rating(data-grade=avisSingle.note_visuel)
+                    span.circle
+                    span.circle
+                    span.circle
+                    span.circle
+                    span.circle
+              
+              if avisSingle.note_auditif
+                .rating-row
+                  span.label Auditif: 
+                  .circle-rating(data-grade=avisSingle.note_auditif)
+                    span.circle
+                    span.circle
+                    span.circle
+                    span.circle
+                    span.circle
+              
+              if avisSingle.note_moteur
+                .rating-row
+                  span.label Moteur: 
+                  .circle-rating(data-grade=avisSingle.note_moteur)
+                    span.circle
+                    span.circle
+                    span.circle
+                    span.circle
+                    span.circle
+            
+            if avisSingle.commentaire && avisSingle.commentaire.trim() !== ''
+              .avis-commentaire
+                p= avisSingle.commentaire
+            
+            hr
+    else
+      p.no-avis Aucun avis n'a encore été posté pour cet établissement.
+    
+    .actions
+      a.btn-primary(href='/') Retour aux établissements
+      button.info-btn#add-review-btn(type='button') Ajouter un avis
+      
+    .feedback-container(style='display:none;')
+      .feedback-form
+        form(action='/notes/add' method='POST')
+          input(type='hidden' name='etablissement_id' value=etablissement.id)
+          
+          .form-group
+            label(for='note_global') Note globale :
+            input(type='number' name='note_global' min='0' max='5' step='0.1' required)
+          
+          .form-group
+            label(for='note_mental') Mental :
+            input(type='number' name='note_mental' min='0' max='5' step='0.1')
+          
+          .form-group
+            label(for='note_visuel') Visuel :
+            input(type='number' name='note_visuel' min='0' max='5' step='0.1')
+          
+          .form-group
+            label(for='note_auditif') Auditif :
+            input(type='number' name='note_auditif' min='0' max='5' step='0.1')
+          
+          .form-group
+            label(for='note_moteur') Moteur :
+            input(type='number' name='note_moteur' min='0' max='5' step='0.1')
+          
+          .form-group
+            label(for='commentaire') Commentaire :
+            textarea(name='commentaire' rows='3' cols='40')
+          
+          button.btn-submit(type='submit') Poster mon avis
