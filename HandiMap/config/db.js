@@ -20,3 +20,4 @@ const sequelize = new Sequelize('HandiMap', 'root', '', {
 })();
 
 module.exports = sequelize;
+
