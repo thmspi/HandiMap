@@ -1,0 +1,17 @@
+// views/layout.pug
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title HandiMap
+    link(rel='stylesheet', href='/css/styles.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css')
+  body
+    nav.navbar
+      a.nav-logo(href='/') HandiMap
+      .nav-spacer
+      a.btn(href='/establishments/new') Ajouter un établissement
+    block content
+    script(src='/js/circle-rating.js')

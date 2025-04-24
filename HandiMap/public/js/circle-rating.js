@@ -1,30 +1,24 @@
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.circle-rating').forEach((container, containerIndex) => {
-    const raw = (container.dataset.grade || '0').replace(',', '.');
-    const score100 = parseFloat(raw);
-    const grade = (score100 / 100) * 5;
+window.initCircleRatings = function (root = document) {
+  root.querySelectorAll(".circle-rating").forEach((container) => {
+    const rawStr = (container.dataset.grade || "0")
+      .toString()
+      .replace(",", ".");
+    const num = parseFloat(rawStr) || 0;
 
-    console.log(`🎯 [${containerIndex}] raw = "${raw}", out of 100 = ${score100}, scaled = ${grade.toFixed(2)}`);
+    const grade = num <= 5 ? num : (num / 100) * 5;
 
-    const circles = container.querySelectorAll('.circle');
-
+    const circles = container.querySelectorAll(".circle");
     const full = Math.floor(grade);
     const half = grade % 1 >= 0.25 && grade % 1 < 0.75;
-    const ceil = Math.ceil(grade);
 
-    console.log(`🔢 [${containerIndex}] full = ${full}, half = ${half}, total = ${ceil}`);
-
-    circles.forEach((circle, index) => {
-      if (index < full) {
-        circle.classList.add('filled');
-        circle.classList.remove('half');
-      } else if (half && index === full) {
-        circle.classList.add('half');
-        circle.classList.remove('filled');
-      } else {
-        circle.classList.remove('filled');
-        circle.classList.remove('half');
-      }
+    circles.forEach((c, i) => {
+      c.classList.remove("filled", "half");
+      if (i < full) c.classList.add("filled");
+      else if (half && i === full) c.classList.add("half");
     });
   });
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  window.initCircleRatings();
 });

@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h2 Questionnaire pour #{est.nom}
+
+  //- Hidden form to collect and submit all responses:
+  form#qform(action=`/questionnaire/${est.id}` method='post')
+    input(type='hidden' name='responses' id='responses')
+
+  //- Question card (JS will inject question text here)
+  #question-card.animate__animated
+
+  //- Yes/No/Back controls
+  .controls
+    button#no-btn(type='button') ❌
+    button#back-btn(type='button') 🔄
+    button#yes-btn(type='button') ✅
+
+  //- Progress bar
+  #progress-bar
+    div#progress-fill(style='width:0%')
+
+  //- Pass data into the client-side script
+  script.
+    window.clientQuestions = !{JSON.stringify(questions.map(q => q.texte))};
+    window.startIdx = !{answers.length};
+  script(src='/js/questionnaire.js')

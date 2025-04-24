@@ -1,0 +1,60 @@
+each item in items
+  li.result-item
+    .info
+      h3 #{item.nom}
+      p #{item.type_lieu} – #{item.proprietaire_prenom} #{item.proprietaire_nom}
+
+      if item.note
+        .circle-rating(data-grade=item.note.note_global style='position:relative;')
+          span.circle
+          span.circle
+          span.circle
+          span.circle
+          span.circle
+          .tooltip
+            .tooltip-row
+              span.label Mental :
+              .circle-rating(data-grade=item.note.note_mental)
+                span.circle
+                span.circle
+                span.circle
+                span.circle
+                span.circle
+            .tooltip-row
+              span.label Visuel :
+              .circle-rating(data-grade=item.note.note_visuel)
+                span.circle
+                span.circle
+                span.circle
+                span.circle
+                span.circle
+            .tooltip-row
+              span.label Auditif :
+              .circle-rating(data-grade=item.note.note_auditif)
+                span.circle
+                span.circle
+                span.circle
+                span.circle
+                span.circle
+            .tooltip-row
+              span.label Moteur :
+              .circle-rating(data-grade=item.note.note_moteur)
+                span.circle
+                span.circle
+                span.circle
+                span.circle
+                span.circle
+      else
+        a.btn-answer(href='/questionnaire/' + item.id) Répondre
+
+    .avis-buttons
+      button.info-btn(type='button' data-target='feedback-' + item.id) Laisser un avis
+      a.view-reviews-btn(href='/avis/etablissement/' + item.id) Voir les avis
+
+    .feedback-container(id='feedback-' + item.id)
+      form(action='/notes/add' method='POST')
+        input(type='hidden' name='etablissement_id' value=item.id)
+        .form-group
+          label(for='note_global') Note globale :
+          input(type='number' name='note_global' min='0' max='5' step='0.1' required)
+        button(type='submit') Poster mon avis

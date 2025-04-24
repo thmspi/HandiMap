@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .home-intro
+    h2 ♿ Bienvenue sur HandiMap
+    p HandiMap est une plateforme pensée pour faciliter le quotidien des personnes en situation de handicap.
+    p
+      | Notre mission : permettre à tous de 
+      strong trouver facilement des établissements accessibles
+      | , et d'encourager les entreprises à 
+      strong partager les informations d’accessibilité
+      |  de leurs lieux (accès PMR, ascenseurs, sanitaires adaptés, etc.).
+    p Sur HandiMap :
+    ul
+      li Les utilisateurs peuvent 
+        strong chercher un lieu 
+        | et voir s’il est adapté à leurs besoins.
+      li Les professionnels peuvent 
+        strong renseigner les caractéristiques d’accessibilité 
+        | de leurs établissements.
+    p 👉 Ensemble, rendons chaque lieu visible, accessible et inclusif.
+  .search-container
+    form(action='/search' method='get')
+      input(type='text' name='query' placeholder='Rechercher un établissement...')
+      button(type='submit') Rechercher
+

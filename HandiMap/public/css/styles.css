@@ -1,6 +1,3 @@
-/* public/css/styles.css */
-
-/* Basic Reset */
 * {
   margin: 0;
   padding: 0;
@@ -391,7 +388,6 @@ button[type="submit"]:hover, .btn-avis:hover {
   color: white;
 }
 
-/* Formulaire sur la page d'avis */
 .feedback-container {
   margin-top: 20px;
   border: 1px solid #ddd;
@@ -417,4 +413,49 @@ button[type="submit"]:hover, .btn-avis:hover {
   padding: 8px 15px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.avis-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px auto;
+  width: 100%;
+}
+
+.view-reviews-btn {
+  align-self: center;
+  margin-left: 5px;
+}
+
+.feedback-container {
+  display: none;
+}
+
+.circle {
+  background-color: #ccc;
+}
+
+.circle.filled {
+  background-color: #006699;
+}
+
+.circle.half {
+  background: linear-gradient(to right, #006699 50%, #ccc 50%);
+}
+
+.circle-rating {
+  position: relative;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.circle-rating:hover .tooltip {
+  display: block;
 }

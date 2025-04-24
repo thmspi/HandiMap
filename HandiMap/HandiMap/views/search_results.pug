@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  h2 Résultats pour "#{query}"
+  ul.results
+    each item in items
+      li.result-item(style='display: flex; justify-content: space-between; align-items: center; position: relative;')
+        .info
+          h3= item.nom
+          p= item.type_lieu + ' – ' + item.proprietaire_prenom + ' ' + item.proprietaire_nom
+        if item.note
+          - const note = item.note.note_global
+          - const details = []
+          - details.push(['Mental', item.note.note_mental])
+          - details.push(['Visuel', item.note.note_visuel])
+          - details.push(['Auditif', item.note.note_auditif])
+          - details.push(['Moteur', item.note.note_moteur])
+          .circle-rating(data-grade=note, style='position: relative;')
+            span.circle
+            span.circle
+            span.circle
+            span.circle
+            span.circle
+            .tooltip
+              each cat in details
+                .tooltip-row
+                  span.label= cat[0]
+                  .circle-rating(data-grade=cat[1])
+                    span.circle
+                    span.circle
+                    span.circle
+                    span.circle
+                    span.circle
+        else
+          a.btn-answer(href='/questionnaire/' + item.id) Répondre
