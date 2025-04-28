@@ -19,7 +19,8 @@ block content
     each item in items
       li.result-item
         .info
-          h3 #{item.nom}
+          h3 
+            a(href='https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(item.adresse), target='_blank')= item.nom
           p #{item.type_lieu} – #{item.proprietaire_prenom} #{item.proprietaire_nom}
 
           if item.note

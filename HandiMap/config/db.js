@@ -1,6 +1,6 @@
 const { Sequelize } = require("sequelize");
 // Connect to your MySQL database in XAMPP/phpMyAdmin
-const sequelize = new Sequelize("HandiMap", "root", "Ammouna1012", {
+const sequelize = new Sequelize("HandiMap", "root", "nounours", {
   host: "localhost",
   port: 3306,
   dialect: "mysql",
